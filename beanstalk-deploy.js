@@ -256,6 +256,7 @@ function main() {
         existingBucketName = null,
         useExistingVersionIfAvailable,
         waitForRecoverySeconds = 30,
+        max_backoff_retries = 10
         waitUntilDeploymentIsFinished = true; //Whether or not to wait for the deployment to complete...
 
     if (IS_GITHUB_ACTION) { //Running in GitHub Actions
@@ -264,6 +265,7 @@ function main() {
         versionLabel = strip(process.env.INPUT_VERSION_LABEL);
         versionDescription = strip(process.env.INPUT_VERSION_DESCRIPTION);
         file = strip(process.env.INPUT_DEPLOYMENT_PACKAGE);
+        max_backoff_retries = strip(process.env.INPUT_MAX_BACKOFF_RETRIES);
 
         awsApiRequest.accessKey = strip(process.env.INPUT_AWS_ACCESS_KEY);
         awsApiRequest.secretKey = strip(process.env.INPUT_AWS_SECRET_KEY);
