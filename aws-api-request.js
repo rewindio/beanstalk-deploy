@@ -9,6 +9,7 @@ function awsApiRequest(options, retryAttempt = 0) {
             accessKey = options.accessKey || awsApiRequest.accessKey || process.env.AWS_ACCESS_KEY_ID,
             secretKey = options.secretKey || awsApiRequest.secretKey || process.env.AWS_SECRET_ACCESS_KEY,
             sessionToken = options.sessionToken || awsApiRequest.sessionToken || process.env.AWS_SESSION_TOKEN,
+            maxBackoffRetries =  options.maxBackoffRetries || awsApiRequest.maxBackoffRetries || 10,
             method = options.method || 'GET',
             path = options.path || '/',
             querystring = options.querystring || {},
