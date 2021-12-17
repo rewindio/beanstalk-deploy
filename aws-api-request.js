@@ -123,8 +123,8 @@ function awsApiRequest(options, retryAttempt = 0) {
                         host: url.hostname
                     }));
                 } else if (wasThrottled(result)) {
-                    //Exponential backoff with a 500ms jitter
-                    let timeout = Math.pow(2, retryAttempt) * 100 + Math.floor(Math.random() * 500);
+                    //Exponential backoff with a 2000ms jitter
+                    let timeout = Math.pow(2, retryAttempt) * 100 + Math.floor(Math.random() * 2000);
                     //Exponential backoff...
                     //2~0 * 100 = 100
                     //2~1 * 100 = 200
